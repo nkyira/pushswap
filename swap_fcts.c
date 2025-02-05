@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 12:51:31 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/05 15:15:53 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/05 16:00:22 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,20 @@ void	swap_stack(t_list **front_s)
 
 int	swap(t_list **front_a, t_list **front_b)
 {
+	int	a_ok;
+	int	b_ok;
+
+	a_ok = (*front_a && (*front_a)->next);
+	b_ok = (*front_b && (*front_b)->next);
 	swap_stack(front_a);
 	swap_stack(front_b);
-	if (!*front_a && !*front_b)
-		return (0);
-	else if (!*front_a)
-		ft_printf("sb\n");
-	else if (!*front_b)
-		ft_printf("sa\n");
-	else
+	if (a_ok && b_ok)
 		ft_printf("ss\n");
+	else if (a_ok)
+		ft_printf("sa\n");
+	else if (b_ok)
+		ft_printf("sb\n");
+	else
+		return (0);
 	return (1);
 }

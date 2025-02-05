@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/05 15:13:02 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/05 17:43:38 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,30 @@ int	main(int argc, char **argv)
 	while (++i < argc)
 		ft_lstadd_back(&front_a, ft_lstnew(argv[i]));
 	print_stacks(front_a, front_b);
-	swap(&front_a, &front_b);
+	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
 	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
+	rrotate(&front_a, &front_b);
+	print_stacks(front_a, front_b);
 	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	swap(&OO, &front_b);
+	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	swap(&front_a, &front_b);
+	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	swap(&front_a, &OO);
+	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	rotate_a(&front_a);
+	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	rotate_a(&front_a);
+	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	rotate_a(&front_a);
+	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	rotate_a(&front_b);
+	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	
+	push_b(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	if (OO)
+		return (0);
 }
