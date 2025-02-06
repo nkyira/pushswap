@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 13:21:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/05 17:39:04 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/06 13:38:10 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate_stack(t_list **front_s)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!*front_s || !(*front_s)->next)
 		return ;
@@ -46,7 +46,7 @@ int	rotate(t_list **front_a, t_list **front_b)
 
 void	rrotate_stack(t_list **front_s)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!*front_s || !(*front_s)->next)
 		return ;
@@ -54,7 +54,7 @@ void	rrotate_stack(t_list **front_s)
 	temp->next = *front_s;
 	*front_s = temp;
 	temp = ft_lstprevious(temp->next, temp);
-	temp-> next = NULL;
+	temp->next = NULL;
 }
 
 int	rrotate(t_list **front_a, t_list **front_b)

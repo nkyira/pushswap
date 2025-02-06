@@ -1,6 +1,6 @@
 NAME = pushswap
 
-SRC = main.c print_fcts.c push_fcts.c swap_fcts.c rotate_fcts.c
+SRC = main.c print_fcts.c push_fcts.c swap_fcts.c rotate_fcts.c error_check.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc -Wall -Wextra -Werror

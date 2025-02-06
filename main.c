@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/05 17:43:38 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/06 15:29:19 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
 	t_list	*front_a;
 	t_list	*front_b;
-	t_list	*OO;
+	t_list	*null;
+	char	**str_tab;
 
-	front_a = ft_lstnew(argv[1]);
+	if (argc < 2)
+		return (0);
+	if (argc == 2)
+		str_tab = ft_split(*(argv + 1), ' ');
+	else
+		str_tab = argv + 1;
+	if (!error_check(str_tab))
+		return (0);
+	front_a = ft_lstnew(*str_tab);
 	front_b = NULL;
-	OO = NULL;
-
-	i = 1;
-	while (++i < argc)
-		ft_lstadd_back(&front_a, ft_lstnew(argv[i]));
+	null = NULL;
+	while (*(++str_tab))
+		ft_lstadd_back(&front_a, ft_lstnew(*str_tab));
 	print_stacks(front_a, front_b);
 	rrotate(&front_a, &front_b);
 	print_stacks(front_a, front_b);
@@ -51,6 +57,18 @@ int	main(int argc, char **argv)
 	print_stacks(front_a, front_b);
 	push_b(&front_a, &front_b);
 	print_stacks(front_a, front_b);
-	if (OO)
+	rrotate(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	push_b(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	rrotate(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	push_b(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	rrotate(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	push_b(&front_a, &front_b);
+	print_stacks(front_a, front_b);
+	if (null)
 		return (0);
 }

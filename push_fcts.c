@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 11:58:21 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/05 14:22:44 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/06 13:25:55 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	push_b(t_list **front_a, t_list **front_b)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!*front_a)
 		return (0);
@@ -27,7 +27,7 @@ int	push_b(t_list **front_a, t_list **front_b)
 
 int	push_a(t_list **front_a, t_list **front_b)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!*front_b)
 		return (0);
