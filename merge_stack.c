@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   push_fcts.c                                         :+:    :+:           */
+/*   merge_stack.c                                       :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2025/02/05 11:58:21 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/09 17:02:45 by jodavis        ########   odam.nl        */
+/*   Created: 2025/02/09 18:26:48 by jodavis        #+#    #+#                */
+/*   Updated: 2025/02/11 17:22:59 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_b(t_data *data)
+
+void	stack_merge(t_data *data)
 {
-	t_list	*temp;
+	int	i;
+	int	sa;
+	int	sb;
 
-	if (!data->front_a)
-		return (0);
-	temp = data->front_a->next;
-	ft_lstadd_front(&data->front_b, data->front_a);
-	data->front_a = temp;
-	ft_printf("pb\n");
-	return (1);
-}
-
-int	push_a(t_data *data)
-{
-	t_list	*temp;
-
-	if (!data->front_b)
-		return (0);
-	temp = data->front_b->next;
-	ft_lstadd_front(&data->front_a, data->front_b);
-	data->front_b = temp;
-	ft_printf("pa\n");
-	return (1);
+	i = 0;
+	sa = 0;
+	sb = 0;
+	while (i++ < data->arg_num / 2)
+	{
+		pushb(data);
+		pushb(data);
+		if (sb && sa)
+			swap(&data->front_a, &data->front_b);
+		else if (sb)
+			swap(NULL, &data->front_b);
+		else if (sa)
+			swap(&data->front_a, NULL);
+		print_stacks(data);
+	}
 }
