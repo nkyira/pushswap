@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/04 14:20:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/11 17:03:21 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/11 17:45:42 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	atoi_tab(t_data *data);
 int		merge_stacks(t_data data);
 int		interror_check(t_data *data);
 void	clear_lst(t_list *lst);
+void	stack_merge(t_data *data);
 
 #endif

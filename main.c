@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/11 17:05:42 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/11 17:44:57 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int	main(int argc, char **argv)
 	while (--i)
 		ft_lstadd_back(&data->front_a, ft_lstnew(temp_tab++));
 	print_stacks(data);
+	stack_merge(data);
 	clear_all(data);
 }
