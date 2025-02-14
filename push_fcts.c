@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 11:58:21 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/09 17:02:45 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/14 19:11:19 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ int	push_a(t_data *data)
 	data->front_b = temp;
 	ft_printf("pa\n");
 	return (1);
+}
+
+void	push_nb(t_data *data, int n)
+{
+	while(n--)
+		push_b(data);
+}
+
+void	push_na(t_data *data, int n)
+{
+	while(--n)
+		push_a(data);
 }
