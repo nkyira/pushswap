@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                              :+:    :+:           */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/14 19:08:21 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/18 08:15:54 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	clear_all(t_data *data)
 	clear_lst(data->front_a);
 	clear_lst(data->front_b);
 	free(data->int_tab);
+	free(data->merge_sizes);
 	free(data);
 	return (0);
 }
@@ -37,6 +38,8 @@ int	setup(t_data *data, int argc, char **argv)
 	if (!error_check(data->str_tab))
 		return (clear_all(data));
 	data->arg_num = tab_len(data->str_tab);
+	*data->merge_sizes = data->arg_num;
+	data->merge_sizes = merge_split(data->merge_sizes, 1);
 	data->int_tab = malloc(sizeof(int) * data->arg_num);
 	atoi_tab(data);
 	if (data->did_split)
@@ -55,18 +58,22 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	data = malloc(sizeof(t_data));
+	data->merge_sizes = malloc(sizeof(int));
 	data->front_a = NULL;
 	data->front_b = NULL;
 	if (!data)
 		return (0);
 	if (!setup(data, argc, argv))
 		return (0);
+	print_tab(data->merge_sizes, find_size(data->arg_num, *data->merge_sizes));
+	return (clear_all(data));
 	i = data->arg_num;
 	temp_tab = data->int_tab;
 	data->front_a = ft_lstnew(temp_tab++);
 	while (--i)
 		ft_lstadd_back(&data->front_a, ft_lstnew(temp_tab++));
 	print_stacks(data);
-	merge_four(data);
+	merge_five(data);
+	print_stacks(data);
 	clear_all(data);
 }

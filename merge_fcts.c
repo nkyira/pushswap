@@ -1,85 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   merge_fcts.c                                        :+:    :+:           */
+/*   merge_fcts.c                                       :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/09 18:26:48 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/14 20:55:20 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/18 07:56:54 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int fBn(t_list *lst)
+int	fbn(t_list *lst)
 {
-	if(*(int *)(lst->content) > *(int *)(lst->next->content))
-		return (1);
-	return (0);
+	return (*(int *)(lst->content) > *(int *)(lst->next->content));
 }
 
-void merge_four(t_data *data)
-{ 
-	int sa;
-	int sb;
-	t_list **a;
-	t_list **b;
-	int i = 2;
+int	abb(t_data *data)
+{
+	t_list	*a;
+	t_list	*b;
 
+	a = data->front_a;
+	b = data->front_b;
+	return (*(int *)(a->content) > *(int *)(b->content));
+}
+
+void	merge_four(t_data *data)
+{
 	push_nb(data, 2);
-	print_stacks(data);
-	a = &data->front_a;
-	b = &data->front_b;
-	sa = *(int *)((*a)->content) > *(int *)((*a)->next->content);
-	sb = *(int *)((*b)->content) < *(int *)((*b)->next->content);
-	if (sa & sb)
-		swap(a, b);
-	else if (sa)
-		swap(a, NULL);
-	else if (sb)
-		swap(NULL, b);
-	print_stacks(data);
-	if (*(int *)((*a)->content) > *(int *)((*b)->content))
+	if (fbn(data->front_a) & !fbn(data->front_b))
+		swap_s(data);
+	else if (fbn(data->front_a))
+		swap_a(data);
+	else if (!fbn(data->front_b))
+		swap_b(data);
+	if (abb(data))
 	{
 		push_nb(data, 2);
-		print_stacks(data);
 		return ;
 	}
-	rotate(NULL, b);
-	while (i--)
+	merging_xy(data, 2, 1);
+}
+
+void sort_three(t_data *data)
+{
+	push_b(data);
+	if (fbn(data->front_a))
+		swap_a(data);
+	push_b(data);
+	if (!fbn(data->front_b))
+		swap_b(data);
+	push_b(data);
+	if (!fbn(data->front_b))
+		swap_b(data);
+}
+
+void merge_five(t_data *data)
+{
+	sort_three(data);
+	if (fbn(data->front_a))
+		swap_a(data);
+	if (abb(data))
 	{
-		if (*(int *)((*a)->content) < *(int *)((*b)->content))
-		{
-			push_b(data);
-			swap(NULL, b);
-			print_stacks(data);
-		}
-		else
-		{
-			rrotate(NULL, b);
-			if (*(int *)((*a)->content) > *(int *)((*b)->content))
-				push_b(data);
-			else
-				i++;
-		}
+		push_nb(data, 2);
+		return ;
 	}
-	print_stacks(data);
-	return ;
-}
-
-void merge_three()
-{
-	
-}
-
-void merge_two()
-{
-
-}
-
-void merge_xy()
-{
-
+	merging_xy(data, 2, 2);
 }

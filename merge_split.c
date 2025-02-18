@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   merge_split.c                                       :+:    :+:           */
+/*   merge_split.c                                      :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/14 15:49:03 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/14 17:11:29 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/18 08:13:31 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	*merge_split(int *frst_tab, int size)
 	size *= 2;
 	free(frst_tab);
 	ft_printf("*new_tab = %d\n", *new_tab);
-	if (*new_tab > 4)
+	if (*new_tab > 5)
 		new_tab = merge_split(new_tab, size);
 	return (new_tab);
 }
@@ -50,7 +50,7 @@ void	print_tab(int *int_tab, int len)
 	ft_printf("]\n");
 }
 
-int	find_size(int arg_num)
+int	find_size(int arg_num, int frst_num)
 {
 	int	size;
 
@@ -59,11 +59,11 @@ int	find_size(int arg_num)
 	size = 2;
 	while (size < arg_num)
 	{
-		ft_printf("SIZE = %d arg_num = %d\n", size, arg_num);
 		size *= 2;
 	}
 	size /= 4;
-	ft_printf("SIZE = %d\n", size);
+	if (frst_num == 5)
+		size /= 2;
 	return (size);
 }
 

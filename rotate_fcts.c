@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   rotate_fcts.c                                       :+:    :+:           */
+/*   rotate_fcts.c                                      :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 13:21:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/09 15:37:48 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/18 02:29:36 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,73 +26,26 @@ void	rotate_stack(t_list **front_s)
 	*front_s = temp;
 }
 
-int	rotate(t_list **front_a, t_list **front_b)
+void	rotate_a(t_data *data)
 {
-	int	a_ok;
-	int	b_ok;
-
-	if (!front_a || !front_b)
-	{
-		a_ok = !(!front_a);
-		b_ok = !(!front_b);
-	}
-	else
-	{
-		a_ok = (*front_a && (*front_a)->next);
-		b_ok = (*front_b && (*front_b)->next);
-	}
-	rotate_stack(front_a);
-	rotate_stack(front_b);
-	if (a_ok && b_ok)
-		ft_printf("rr\n");
-	else if (a_ok)
-		ft_printf("ra\n");
-	else if (b_ok)
-		ft_printf("rb\n");
-	else
-		return (0);
-	return (1);
+	rotate_stack(&data->front_a);
+	ft_printf("ra\n");
 }
 
-void	rrotate_stack(t_list **front_s)
+void	rotate_b(t_data *data)
 {
-	t_list	*temp;
-
-	if (!front_s)
-		return ;
-	if (!*front_s || !(*front_s)->next)
-		return ;
-	temp = ft_lstlast(*front_s);
-	temp->next = *front_s;
-	*front_s = temp;
-	temp = ft_lstprevious(temp->next, temp);
-	temp->next = NULL;
+	rotate_stack(&data->front_b);
+	ft_printf("rb\n");
 }
 
-int	rrotate(t_list **front_a, t_list **front_b)
+void	rotate_na(t_data *data, int n)
 {
-	int	a_ok;
-	int	b_ok;
+	while(n--)
+		rotate_a(data);
+}
 
-	if (!front_a || !front_b)
-	{
-		a_ok = !(!front_a);
-		b_ok = !(!front_b);
-	}
-	else
-	{
-		a_ok = (*front_a && (*front_a)->next);
-		b_ok = (*front_b && (*front_b)->next);
-	}
-	rrotate_stack(front_a);
-	rrotate_stack(front_b);
-	if (a_ok && b_ok)
-		ft_printf("rrr\n");
-	else if (a_ok)
-		ft_printf("rra\n");
-	else if (b_ok)
-		ft_printf("rrb\n");
-	else
-		return (0);
-	return (1);
+void	rotate_nb(t_data *data, int n)
+{
+	while(n--)
+		rotate_b(data);
 }
