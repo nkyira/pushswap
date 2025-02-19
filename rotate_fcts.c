@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 13:21:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/18 02:29:36 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/19 01:00:47 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	rotate_b(t_data *data)
 
 void	rotate_na(t_data *data, int n)
 {
-	while(n--)
+	while (n--)
 		rotate_a(data);
 }
 
 void	rotate_nb(t_data *data, int n)
 {
-	while(n--)
+	while (n--)
 		rotate_b(data);
 }

@@ -6,7 +6,7 @@
 /*   By: jodavis <jodavis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:18:17 by jodavis           #+#    #+#             */
-/*   Updated: 2024/10/12 18:23:35 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/19 07:52:46 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	skip(char **ptr, char c)
 		(*ptr)++;
 }
 
-void	freesplit(char ***strtab, size_t i)
+void	freesplit(char **strtab, size_t i)
 {
 	while (i--)
-		free((*strtab)[i]);
-	free(*strtab);
+		free(strtab[i]);
+	free(strtab);
 }
 
 char	**ft_split(char const *s, char c)
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 		strtab[i - count] = ft_substr(ptr, 0, nextc(ptr, c));
 		if (!strtab[i - count])
 		{
-			freesplit(&strtab, i - count);
+			freesplit(strtab, i - count);
 			return (NULL);
 		}
 		ptr = ptr + nextc(ptr, c);

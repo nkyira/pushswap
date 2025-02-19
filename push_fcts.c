@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   push_fcts.c                                         :+:    :+:           */
+/*   push_fcts.c                                        :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 11:58:21 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/14 19:11:19 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/19 02:53:01 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	push_a(t_data *data)
 
 void	push_nb(t_data *data, int n)
 {
-	while(n--)
+	while (n--)
 		push_b(data);
 }
 
 void	push_na(t_data *data, int n)
 {
-	while(--n)
+	while (n--)
 		push_a(data);
 }

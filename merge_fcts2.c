@@ -1,90 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_fcts1.c                                      :+:      :+:    :+:   */
+/*   merge_fcts2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 06:47:12 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/19 06:55:39 by jodavis          ###   ########.fr       */
+/*   Created: 2025/02/19 04:49:18 by jodavis           #+#    #+#             */
+/*   Updated: 2025/02/19 06:56:11 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	merging_xy(t_data *data, int x, int y)
+void	merging_xy_rev(t_data *data, int x, int y)
 {
-	if (!data->index)
-		rrotate_b(data);
+	if (data->index == data->merge_num)
+		rrotate_a(data);
 	else
-		rotate_nb(data, y);
+		rotate_na(data, y);
 	while (x)
 	{
 		if (!abb(data))
 		{
-			push_b(data);
+			push_a(data);
 			x--;
-			swap_b(data);
+			swap_a(data);
 		}
 		else
 		{
 			while (y && abb(data))
 			{
-				rrotate_b(data);
+				rrotate_a(data);
 				y--;
 			}
 			if (abb(data))
 			{
-				push_b(data);
+				push_a(data);
 				x--;
 			}
 		}
 	}
-	rrotate_nb(data, y);
+	rrotate_na(data, y);
 }
 
-void	merge_xy(t_data *data, int x, int y)
+void	merge_xy_rev(t_data *data, int x, int y)
 {
-	push_nb(data, y);
+	push_na(data, y);
 	if (abb(data))
 	{
-		push_nb(data, x);
+		push_na(data, x);
 		return ;
 	}
-	merging_xy(data, x, y - 1);
+	merging_xy_rev(data, x, y - 1);
 }
 
-void	sort2345(t_data *data, int n)
-{
-	if (n == 2)
-	{
-		if (fbn(data->front_a))
-			swap_a(data);
-		push_nb(data, 2);
-	}
-	if (n == 3)
-		sort_three(data);
-	if (n == 4)
-		merge_four(data);
-	if (n == 5)
-		merge_five(data);
-}
-
-void	first_sort(t_data *data)
-{
-	int	*tab;
-	int	i;
-
-	tab = data->merge_sizes;
-	i = 0;
-	while (i < data->merge_num)
-	{
-		sort2345(data, tab[i]);
-		i++;
-	}
-}
-
-void	merge_stack_a(t_data *data)
+void	merge_stack_b(t_data *data)
 {
 	int	*tab;
 	int	*new_sizes;
@@ -92,13 +62,13 @@ void	merge_stack_a(t_data *data)
 
 	new_sizes = malloc(sizeof(int) * data->merge_num / 2);
 	tab = data->merge_sizes;
-	i = 0;
-	while (i < data->merge_num)
+	i = data->merge_num;
+	while (i)
 	{
 		data->index = i;
-		merge_xy(data, tab[i + 1], tab[i]);
-		new_sizes[i / 2] = tab[i] + tab [i + 1];
-		i += 2;
+		merge_xy_rev(data, tab[i - 2], tab[i - 1]);
+		new_sizes[i / 2 - 1] = tab[i - 1] + tab [i - 2];
+		i -= 2;
 	}
 	data->index = -1;
 	data->merge_num /= 2;

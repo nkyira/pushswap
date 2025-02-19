@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   utils.c                                             :+:    :+:           */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 11:38:51 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/11 17:05:35 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/19 07:24:06 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ void	atoi_tab(t_data *data)
 	i = 0;
 	while (data->str_tab[i])
 	{
-		data->int_tab[i] = ft_atoi(data->str_tab[i]);
+			data->int_tab[i] = ft_atoi(data->str_tab[i]);
+		if (data->did_split)
+			free(data->str_tab[i]);
 		i++;
 	}
+	if (data->did_split)
+		free(data->str_tab);
 }
 
 int	tab_len(char **str_tab)

@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/09 18:26:48 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/18 07:56:54 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/19 00:58:56 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	merge_four(t_data *data)
 	merging_xy(data, 2, 1);
 }
 
-void sort_three(t_data *data)
+void	sort_three(t_data *data)
 {
 	push_b(data);
 	if (fbn(data->front_a))
@@ -57,7 +57,7 @@ void sort_three(t_data *data)
 		swap_b(data);
 }
 
-void merge_five(t_data *data)
+void	merge_five(t_data *data)
 {
 	sort_three(data);
 	if (fbn(data->front_a))

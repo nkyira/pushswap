@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 12:51:31 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/18 02:50:06 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/19 01:00:21 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ void	swap_s(t_data *data)
 	swap_stack(&data->front_b);
 	ft_printf("ss\n");
 }
-
