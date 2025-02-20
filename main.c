@@ -6,11 +6,38 @@
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/20 09:47:10 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/20 12:29:55 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	all_setup(t_data *data, int argc, char **argv)
+{
+	if (!setup1(data, argc, argv))
+		return (0);
+	if (!setup2(data))
+		return (0);
+	if (data->arg_num <= 5)
+	{
+		sort2345(data, data->arg_num);
+		push_na(data, data->arg_num);
+		clear_all(data);
+		return (0);
+	}
+	return (1);
+}
+
+int	contains_space(char *s)
+{
+	while (*s)
+	{
+		if (*s == ' ')
+			return (1);
+		s++;
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,12 +45,12 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	if (argc == 2 && !contains_space(argv[1]))
+		return (0);
 	data = setup_data();
 	if (!data)
 		return (0);
-	if (!setup1(data, argc, argv))
-		return (0);
-	if (!setup2(data))
+	if (!all_setup(data, argc, argv))
 		return (0);
 	first_sort(data);
 	while (data->merge_num > 1)

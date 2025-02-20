@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/11 15:34:52 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/20 09:49:49 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/20 11:38:07 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,12 @@ int	contains_double(t_data *data)
 
 int	interror_check(t_data *data)
 {
-	if (contains_double(data) || is_sorted(data))
+	if (contains_double(data))
 	{
 		ft_printf("Error\n");
 		return (0);
 	}
 	if (is_sorted(data))
-	{
-		ft_printf("Error\n");
 		return (0);
-	}
 	return (1);
 }

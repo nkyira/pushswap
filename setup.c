@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   setup.c                                             :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 01:47:37 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/19 07:52:55 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/20 12:19:53 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	clear_all(t_data *data)
 {
 	if (data->did_split)
-	{
-		ft_printf("doing free_split\n");
 		freesplit(data->str_tab, data->arg_num);
-	}
 	clear_lst(data->front_a);
 	clear_lst(data->front_b);
 	free(data->int_tab);
