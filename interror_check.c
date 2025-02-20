@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/11 15:34:52 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/11 16:16:23 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/20 09:49:49 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	is_sorted(t_data *data)
 		temp = *tab;
 		tab++;
 	}
-	ft_printf("is already sorted\n");
 	return (1);
 }
 
@@ -41,7 +40,6 @@ int	is_double(t_data *data, int pos)
 	{
 		if (data->int_tab[i] == data->int_tab[pos])
 		{
-			ft_printf("contains two or more %ds\n", data->int_tab[i]);
 			return (1);
 		}
 	}
@@ -61,9 +59,15 @@ int	contains_double(t_data *data)
 
 int	interror_check(t_data *data)
 {
-	if (contains_double(data))
+	if (contains_double(data) || is_sorted(data))
+	{
+		ft_printf("Error\n");
 		return (0);
+	}
 	if (is_sorted(data))
+	{
+		ft_printf("Error\n");
 		return (0);
+	}
 	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.h                                         :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/04 14:20:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/19 06:22:08 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/20 09:50:42 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		*merge_split(int *frst_tab, int size);
 void	sort_three(t_data *data);
 void	merge_four(t_data *data);
 void	merge_five(t_data *data);
+void	sort2345(t_data *data, int n);
 void	merging_xy(t_data *data, int x, int y);
 void	merge_xy(t_data *data, int x, int y);
 void	first_sort(t_data *data);

@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_fcts2.c                                      :+:      :+:    :+:   */
+/*   merge_fcts2.c                                       :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 04:49:18 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/19 06:56:11 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/02/20 09:42:30 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	merging_xy_rev(t_data *data, int x, int y)
+int	handle_rotate_rev(t_data *data, int y)
 {
 	if (data->index == data->merge_num)
+	{
 		rrotate_a(data);
+		return (0);
+	}
 	else
-		rotate_na(data, y);
+	{
+		while (!abb(data) && y)
+		{
+			rotate_a(data);
+			y--;
+		}
+	}
+	return (y);
+}
+
+void	merging_xy_rev(t_data *data, int x, int y)
+{
+	y -= handle_rotate_rev(data, y);
 	while (x)
 	{
 		if (!abb(data))
@@ -74,4 +89,20 @@ void	merge_stack_b(t_data *data)
 	data->merge_num /= 2;
 	free(data->merge_sizes);
 	data->merge_sizes = new_sizes;
+}
+
+void	sort2345(t_data *data, int n)
+{
+	if (n == 2)
+	{
+		if (fbn(data->front_a))
+			swap_a(data);
+		push_nb(data, 2);
+	}
+	if (n == 3)
+		sort_three(data);
+	if (n == 4)
+		merge_four(data);
+	if (n == 5)
+		merge_five(data);
 }
