@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   error_check.c                                       :+:    :+:           */
+/*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/06 15:01:12 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/20 09:48:35 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/22 14:43:18 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	is_all_digit(char **str_tab)
 			if (!ft_isdigit(**str_tab))
 			{
 				*str_tab = str_start;
+				ft_printf("Error\n");
 				return (0);
 			}
 			(*str_tab)++;
@@ -66,7 +67,6 @@ int	error_check(char **str_tab)
 {
 	if (!is_all_digit(str_tab))
 	{
-		ft_printf("Error\n");
 		return (0);
 	}
 	while (*str_tab)

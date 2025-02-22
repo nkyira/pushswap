@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                             :+:    :+:           */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 01:47:37 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/20 12:19:53 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/22 11:43:12 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	setup1(t_data *data, int argc, char **argv)
 	if (!error_check(data->str_tab))
 		return (clear_all(data));
 	data->int_tab = malloc(sizeof(int) * data->arg_num);
-	data->did_split = 0;
 	atoi_tab(data);
 	if (!interror_check(data))
 		return (clear_all(data));

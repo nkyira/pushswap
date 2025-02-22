@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   push_swap.h                                         :+:    :+:           */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/04 14:20:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/20 09:50:42 by jodavis        ########   odam.nl        */
+/*   Updated: 2025/02/22 14:37:45 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_data	*setup_data(void);
 int		setup1(t_data *data, int argc, char **argv);
 int		setup2(t_data *data);
 int		error_check(char **str_tab);
+int		is_all_digit(char **str_tab);
 void	atoi_tab(t_data *data);
 int		is_sorted(t_data *data);
 int		interror_check(t_data *data);
