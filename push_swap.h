@@ -73,5 +73,6 @@ void	merge_stack_a(t_data *data);
 void	merging_xy_rev(t_data *data, int x, int y);
 void	merge_xy_rev(t_data *data, int x, int y);
 void	merge_stack_b(t_data *data);
+void	small_sort(t_data *data);
 
 #endif

@@ -20,8 +20,7 @@ int	all_setup(t_data *data, int argc, char **argv)
 		return (0);
 	if (data->arg_num <= 5)
 	{
-		sort2345(data, data->arg_num);
-		push_na(data, data->arg_num);
+		small_sort(data);
 		clear_all(data);
 		return (0);
 	}
