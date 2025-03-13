@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                             :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <jodavis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:08:35 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/19 07:34:00 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/03/13 09:26:01 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_putnbr_fd(int n, int fd);
 // chained list fonctions
 typedef struct s_list
 {
+	long int		num;
 	void			*content;
 	struct s_list	*next;
 }					t_list;
@@ -70,7 +71,7 @@ t_list	*ft_lstprevious(t_list *lst, t_list *node);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *, long int));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // printf functions

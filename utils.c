@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils.c                                             :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/05 11:38:51 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/22 11:46:58 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/03/13 11:48:30 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "stdio.h"
 
 void	atoi_tab(t_data *data)
 {
@@ -34,18 +35,18 @@ int	tab_len(char **str_tab)
 	return (len);
 }
 
-void	print_node(void *s)
+void	print_node(void *s, long int num)
 {
-	ft_printf("%d ", *(int *)s);
+	printf("(%ld)%d ", num, *(int *)s);
 }
 
 void	print_stacks(t_data *data)
 {
-	ft_printf("-----------------------------------\nA : ");
+	printf("-----------------------------------\nA : ");
 	ft_lstiter(data->front_a, print_node);
-	ft_printf("\nB : ");
+	printf("\nB : ");
 	ft_lstiter(data->front_b, print_node);
-	ft_printf("\n");
+	printf("\n");
 }
 
 void	clear_lst(t_list *lst)

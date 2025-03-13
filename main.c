@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:10:58 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/22 14:40:21 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/03/13 14:27:04 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,18 @@ int	contains_space(char *s)
 	}
 	return (0);
 }
-
+void	merge_sort(t_data *data)
+{
+	first_sort(data);
+	while (data->merge_num > 1)
+	{
+		merge_stack_b(data);
+		if (data->merge_num > 1)
+			merge_stack_a(data);
+	}
+	if (!data->front_a)
+		push_na(data, data->arg_num);
+}
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -54,14 +65,6 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!all_setup(data, argc, argv))
 		return (0);
-	first_sort(data);
-	while (data->merge_num > 1)
-	{
-		merge_stack_b(data);
-		if (data->merge_num > 1)
-			merge_stack_a(data);
-	}
-	if (!data->front_a)
-		push_na(data, data->arg_num);
+	radix_sort(data);
 	clear_all(data);
 }

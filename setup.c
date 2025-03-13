@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   setup.c                                             :+:    :+:           */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodavis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 01:47:37 by jodavis           #+#    #+#             */
-/*   Updated: 2025/02/22 11:43:12 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/03/13 11:56:51 by jodavis        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,25 @@ int	setup1(t_data *data, int argc, char **argv)
 	return (1);
 }
 
+int get_min(t_data *data)
+{
+	int min;
+	int	i;
+
+	min = 0;
+	i = -1;
+	while (++i < data->arg_num)
+		if (data->int_tab[i] < min)
+			min = data->int_tab[i];
+	return (min);
+}
+
 int	setup2(t_data *data)
 {
 	int		i;
 	int		*temp_tab;
+	t_list	*stack;
+	int		min;
 
 	*data->merge_sizes = data->arg_num;
 	data->merge_sizes = merge_split(data->merge_sizes, 1);
@@ -79,5 +94,12 @@ int	setup2(t_data *data)
 	data->front_a = ft_lstnew(temp_tab++);
 	while (--i)
 		ft_lstadd_back(&data->front_a, ft_lstnew(temp_tab++));
+	stack = data->front_a;
+	min = get_min(data);
+	while (stack)
+	{
+		stack->num = (long int)(*(int *)stack->content) - min;
+		stack = stack->next;
+	}	
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jodavis <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
 /*   Created: 2025/02/04 14:20:07 by jodavis        #+#    #+#                */
-/*   Updated: 2025/02/22 14:37:45 by jodavis          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:57:57 by jodavis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	atoi_tab(t_data *data);
 int		is_sorted(t_data *data);
 int		interror_check(t_data *data);
 //merge functions
+void	radix_sort(t_data *data);
 int		fbn(t_list *list);
 int		abb(t_data *data);
 int		*merge_split(int *frst_tab, int size);
