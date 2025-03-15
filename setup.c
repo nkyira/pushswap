@@ -84,7 +84,6 @@ int	setup2(t_data *data)
 	int		i;
 	int		*temp_tab;
 	t_list	*stack;
-	int		min;
 
 	*data->merge_sizes = data->arg_num;
 	data->merge_sizes = merge_split(data->merge_sizes, 1);
@@ -95,11 +94,10 @@ int	setup2(t_data *data)
 	while (--i)
 		ft_lstadd_back(&data->front_a, ft_lstnew(temp_tab++));
 	stack = data->front_a;
-	min = get_min(data);
 	while (stack)
 	{
-		stack->num = (long int)(*(int *)stack->content) - min;
+		stack->num = -1;
 		stack = stack->next;
-	}	
+	}
 	return (1);
 }

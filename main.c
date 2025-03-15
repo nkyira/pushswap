@@ -65,6 +65,6 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!all_setup(data, argc, argv))
 		return (0);
-	radix_sort(data);
+	radix_sort(data);;
 	clear_all(data);
 }

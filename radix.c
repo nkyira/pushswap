@@ -31,11 +31,42 @@ int		stack_is_sorted(t_data *data)
 	return (1);
 }
 
+t_list *get_next_min(t_list *stack)
+{
+	t_list *min;
+
+	while (stack->num != -1)
+		stack = stack->next;
+	min = stack;
+	while (stack)
+	{
+		if (*(int *)(min->content) > *(int *)(stack->content))
+			if (stack->num == -1)
+				min = stack;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+void	sort_index(t_data *data)
+{
+	int		i;
+	t_list	*min;
+
+	i = -1;
+	while (++i < data->arg_num)
+	{
+		min = get_next_min(data->front_a);
+		min->num = i;
+	}
+}
+
 void	radix_sort(t_data *data)
 {
 	int	i;
 	int	j;
 
+	sort_index(data);
 	while (!stack_is_sorted(data))
 	{
 		i = data->arg_num;
